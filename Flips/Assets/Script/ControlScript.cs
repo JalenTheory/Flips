@@ -11,6 +11,10 @@ public class ControlScript : MonoBehaviour {
 	public Transform []cardUp = new Transform[2]; 
 	public int totalCardUp;
 	int hitCount;
+	public bool gameOver;
+	float endTime;
+	bool once;
+	
 	void Start () {
 		shufMat = GameScript.RandomizeMaterial(mat);
 		int count = 0;
@@ -29,6 +33,8 @@ public class ControlScript : MonoBehaviour {
 		cardCheck = 0;
 		totalCardUp =0;
 		hitCount = 0;
+		gameOver = false;
+		once =true;
 	}
 	
 	// Update is called once per frame
@@ -46,6 +52,11 @@ public class ControlScript : MonoBehaviour {
 			}
 		}
 		if(cardCheck >= 2)CheckCard ();
+		if(totalCardUp == 6 && once){
+			gameOver = true;
+			endTime = Time.timeSinceLevelLoad;
+			once = false;
+		}
 	}
 	void CheckCard(){	
 		CardScript scriptA = cardUp[0].GetComponent<CardScript>();
@@ -60,5 +71,11 @@ public class ControlScript : MonoBehaviour {
 				cardCheck = 0;
 			}
 		}	
+	}
+	public int GetHitCount(){
+		return hitCount;
+	}
+	public float GetEndTime(){
+		return endTime;
 	}
 }

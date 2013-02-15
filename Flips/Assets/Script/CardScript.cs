@@ -5,7 +5,6 @@ public class CardScript : MonoBehaviour {
 
 	Transform _tr;
 	float timer;
-	float speed;
 	Quaternion startRotation;
 	Quaternion endRotation;
 	public bool rotateIn;
@@ -22,15 +21,14 @@ public class CardScript : MonoBehaviour {
 		rotateIn = false;
 		rotateOut = false;
 		faceIn = false;
-		speed = 0.5f;
 	}
 	void Update(){
 		if(rotateIn){
-			timer +=Time.deltaTime*speed;
+			timer +=Time.deltaTime;
 			_tr.rotation = Quaternion.Lerp (_tr.rotation,endRotation,timer);
 			Reset ();
 		}else if (rotateOut){
-			timer +=Time.deltaTime*speed;
+			timer +=Time.deltaTime;
 			_tr.rotation = Quaternion.Lerp (_tr.rotation,startRotation,timer);
 			Reset ();
 		}	
