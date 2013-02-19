@@ -1,10 +1,16 @@
-#################
-## Eclipse
-#################
+#####
+##Unity
+######
 Temp/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
+
+
+#################
+## Eclipse
+#################
+
 *.pydevproject
 .project
 .metadata
