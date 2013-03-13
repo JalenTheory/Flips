@@ -51,7 +51,6 @@
      <Compile Include="Assets\Script\GameScript.cs" />
      <Compile Include="Assets\Script\HardScript.cs" />
      <Compile Include="Assets\Script\MediumScript.cs" />
-     <Compile Include="Assets\Script\Menu\LevelScript.cs" />
      <Compile Include="Assets\Script\Menu\MenuScript.cs" />
      <Compile Include="Assets\Script\Splash\SplashScreen.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />

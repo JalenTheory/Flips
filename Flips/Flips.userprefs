@@ -1,17 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Menu\MenuScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Splash\SplashScreen.cs">
     <Files>
-      <File FileName="Assets\Script\Menu\MenuScript.cs" Line="83" Column="28" />
-      <File FileName="Assets\Script\CardScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\GUIScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Splash\SplashScreen.cs" Line="19" Column="30" />
-      <File FileName="Assets\Script\Menu\LevelScript.cs" Line="73" Column="4" />
-      <File FileName="Assets\Script\EasyScript.cs" Line="16" Column="6" />
-      <File FileName="Assets\Script\MediumScript.cs" Line="6" Column="1" />
-      <File FileName="Assets\Script\ControlScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\GameScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\HardScript.cs" Line="29" Column="23" />
+      <File FileName="Assets\Script\Splash\SplashScreen.cs" Line="35" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
