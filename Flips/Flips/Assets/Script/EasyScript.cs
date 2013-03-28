@@ -8,12 +8,16 @@ public class EasyScript : MonoBehaviour {
 	public Material[]  mat = new Material[6];
 	public Material [] shufMat = new Material[6];
 	ControlScript script;
+	
+	 
 
 	
 	void Start () {
+		 
 		script = GetComponent<ControlScript>();
 		shufMat = ControlScript.RandomizeMaterial(mat);
 		int count = 0;
+		
 		for(int i=0;i<3;i++){
 			for(int j=0;j<2;j++){
 				Vector3 pos = new Vector3(i*20,j*20,0);
@@ -27,5 +31,24 @@ public class EasyScript : MonoBehaviour {
 			}
 		}
 		script.SetMaxCard(6);
+		 
 	}
+	
+	public int time = 0; 
+	public bool pausebool = false;
+	void OnGUI () 
+	{
+		if(!pausebool){
+			time++;	 
+			if(GUI.Button (new Rect(Screen.width-100,10,50,50),"Pause")){pausebool = true;}
+		}
+		
+		else{if(GUI.Button (new Rect(Screen.width-100,10,50,50),"Pause")){pausebool = false;}
+		}
+		
+		GUI.Box(new Rect(10,10,100,50), "Time "+time/120);
+			
+		
+	}
+ 
 }

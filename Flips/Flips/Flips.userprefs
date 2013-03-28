@@ -1,16 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\MediumScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\EasyScript.cs">
     <Files>
-      <File FileName="Assets\Script\Menu\MenuScript.cs" Line="75" Column="28" />
+      <File FileName="Assets\Script\Menu\MenuScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\CardScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\GUIScript.cs" Line="43" Column="1" />
-      <File FileName="Assets\Script\Splash\SplashScreen.cs" Line="19" Column="30" />
-      <File FileName="Assets\Script\Menu\LevelScript.cs" Line="73" Column="4" />
-      <File FileName="Assets\Script\EasyScript.cs" Line="16" Column="6" />
+      <File FileName="Assets\Script\GUIScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Splash\SplashScreen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Menu\LevelScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\EasyScript.cs" Line="22" Column="12" />
       <File FileName="Assets\Script\MediumScript.cs" Line="29" Column="23" />
-      <File FileName="Assets\Script\ControlScript.cs" Line="90" Column="2" />
-      <File FileName="Assets\Script\GameScript.cs" Line="4" Column="1" />
+      <File FileName="Assets\Script\ControlScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\GameScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
