@@ -28,5 +28,23 @@ public class MediumScript : MonoBehaviour {
 		}
 		script.SetMaxCard(10);
 	}
+	
+	public int time = 0; 
+	public bool pausebool = false;
+	void OnGUI () 
+	{
+		if(!pausebool){
+			time++;	 
+			if(GUI.Button (new Rect(Screen.width-100,10,50,30),"Pause")){pausebool = true;}
+	 	}
+		
+		else{if(GUI.Button (new Rect(Screen.width-100,10,50,30),"Pause")){pausebool = false;} 
+		}
+		
+		GUI.Box(new Rect(10,10,100,30), "Time "+time/120);
+		if(GUI.Button (new Rect(Screen.width-100,60,50,30),"Menu")){Application.LoadLevel(1);}
+		
+		
+	}
 }
 

@@ -11,6 +11,9 @@ public class GUIScript : MonoBehaviour {
 	Rect quitButton;
 	Rect playAgain;
 	ControlScript script;
+	EasyScript easyscript;
+	MediumScript mediumscript;
+	HardScript hardscript;
 	const string gameOver ="Game Over";
 	const string scoreBoard="Score Board";
 
@@ -29,6 +32,10 @@ public class GUIScript : MonoBehaviour {
 		playAgain =new Rect(Screen.width / 2f - offsetW, Screen.height / 2f - offsetH + boxHeight*4, Screen.width * 0.5f, boxHeight);
 		quitButton =new Rect(Screen.width / 2f - offsetW, Screen.height / 2f - offsetH + boxHeight*5, Screen.width * 0.5f, boxHeight);
 		script = GameObject.Find ("Control").GetComponent<ControlScript>();
+//		easyscript = GameObject.Find ("pausebool").GetComponent<EasyScript>();
+//		mediumscript = GameObject.Find ("MediumScript").GetComponent<MediumScript>();
+//		hardscript = GameObject.Find ("HardScript").GetComponent<HardScript>();
+		 
 		
 	}
 	
@@ -43,12 +50,18 @@ public class GUIScript : MonoBehaviour {
 			if(GUI.Button(playAgain,"PlayAgain")){
 				Application.LoadLevel(Application.loadedLevel);
 			}
-			if(GUI.Button(quitButton,"Menu")){
-				Application.LoadLevel(1);
-			}
+		}
+			 
+			
+//			if(easyscript.pausebool){GUI.Box (box,gameOver);
+//			}
+//			
+//			if(mediumscript.pausebool){GUI.Box (box,gameOver);
+//			}
+//			
+//			if(hardscript.pausebool){GUI.Box (box,gameOver);
+//			}
 			
 		}
 	}
-	
-}
-
+	 
