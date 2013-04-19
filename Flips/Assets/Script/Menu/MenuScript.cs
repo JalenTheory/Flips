@@ -26,7 +26,7 @@ public class MenuScript : MonoBehaviour {
 	GUIStyle footer = new GUIStyle();
 	
 	enum Menu{
-		First,Second,Rest
+		First,Second,Credits,Rest
 	}
 	Menu current;
 	bool firstMenu;
@@ -59,7 +59,7 @@ public class MenuScript : MonoBehaviour {
 		secondButton = 	new Rect(boxPosWidth,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
 		thirdButton = 	new Rect(boxPosWidth,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
 		fourthButton =	new Rect(boxPosWidth,titleBoxHeight+boxHeight*3+offset,boxWidth,boxHeight);
-		copyBox = new Rect(boxPosWidth,Screen.height - boxHeight/2 ,boxWidth,boxHeight/3 );
+		copyBox = new Rect(boxPosWidth,Screen.height - boxHeight/2 ,boxWidth,boxHeight/3 );  
 		current = Menu.Rest;
 		posIn = boxPosWidth;
 		posOut = boxPosWidth - Screen.width;
@@ -69,12 +69,13 @@ public class MenuScript : MonoBehaviour {
 	// Update is called once per frame
 	void OnGUI () {
 		GUI.backgroundColor = Color.yellow;
-		GUI.Box (title,"Flips",style);
+		GUI.Box (title,"Flips",style); //position,content,style
 		
-		if((firstMenu&&current == Menu.Rest) ||current == Menu.First||current == Menu.Second){
+		if((firstMenu&&current == Menu.Rest) ||current == Menu.First||current == Menu.Second  || current == Menu.Credits){
 			firstButton= 	new Rect(boxPosWidth,titleBoxHeight+offset,boxWidth,boxHeight);
 			secondButton = 	new Rect(boxPosWidth,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
 			thirdButton = 	new Rect(boxPosWidth,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
+			fourthButton = new Rect(boxPosWidth, titleBoxHeight+boxHeight*3+offset,boxWidth,boxHeight);
 			GUI.backgroundColor = Color.magenta;
 			
 			if(GUI.Button (firstButton,"Play",buttonStyle))
@@ -85,12 +86,20 @@ public class MenuScript : MonoBehaviour {
 			{
 				print ("Score");
 			}
+			
+			if(GUI.Button (fourthButton,"Credits",buttonStyle))
+			{  
+				print ("Credits");
+				current = Menu.Credits;
+			}
+			
 			if(GUI.Button (thirdButton,"Quit",buttonStyle))
 			{
 				Application.Quit ();	
 			}
 		}
-		if((!firstMenu &&current == Menu.Rest) ||current == Menu.First||current == Menu.Second){
+		
+		if((!firstMenu &&current == Menu.Rest) ||current == Menu.First||current == Menu.Second  ){
 			firstButton= 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+offset,boxWidth,boxHeight);
 			secondButton = 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
 			thirdButton = 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
@@ -113,25 +122,58 @@ public class MenuScript : MonoBehaviour {
 				current = Menu.First;
 			}
 		}
-	
+
+		
+		
+		if(!firstMenu &&  current == Menu.Credits){
+			
+			 
+			Rect creditRec1 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+offset,boxWidth,boxHeight);
+			Rect creditRec2 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
+			Rect creditRec3 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
+			Rect BackRec4 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*3+offset,boxWidth,boxHeight);
+		
+			GUI.Box (creditRec1,"Lucas",buttonStyle);
+			GUI.Box (creditRec2,"Maimuna",buttonStyle);	 
+			GUI.Box (creditRec3,"Scott ",buttonStyle); 
+				 
+			if(GUI.Button (BackRec4,"Back",buttonStyle))
+			{
+				current = Menu.First;
+			}
+			 
+		}
+		
+		
+		
 		GUI.Box (copyBox,"Metropolia Portal 2013",footer);
 		
 		
 		if(current == Menu.First){
 			ratio += Time.deltaTime;
-			boxPosWidth = Mathf.Lerp(boxPosWidth ,posIn,ratio);
+			boxPosWidth = Mathf.Lerp(boxPosWidth ,posIn,ratio); //  transform.position, target.position(i wanna reach),Time.deltaTime * smooth);
 			if(ratio >= 0.8f){
 				ratio = Time.deltaTime;
 				current = Menu.Rest;
 				firstMenu = true;
 			}
 		}
-		else if(current == Menu.Second){
+		 if(current == Menu.Second){
 			ratio += Time.deltaTime;
 			boxPosWidth = Mathf.Lerp(boxPosWidth ,posOut,ratio);
 			if(ratio >= 0.8f){
 				ratio = Time.deltaTime;
 				current = Menu.Rest;
+				firstMenu = false;
+			}
+		}
+		
+		else if(current == Menu.Credits){
+			 
+			ratio += Time.deltaTime;
+			boxPosWidth = Mathf.Lerp(boxPosWidth ,posOut,ratio);
+			if(ratio >= 0.8f){
+				ratio = Time.deltaTime; 
 				firstMenu = false;
 			}
 		}

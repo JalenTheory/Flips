@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class ControlScript : MonoBehaviour {
-
+	//public GameObject card;
+	//GameObject[] cards = new GameObject[6];
+	//public Material[]  mat = new Material[6];
+	//public Material [] shufMat = new Material[6];
 	public int cardCheck;
+	 
 	public int totalCardUp;
 	int hitCount;
 	public bool gameOver;
@@ -16,7 +20,7 @@ public class ControlScript : MonoBehaviour {
 	int maxCard;
 	void Start () {
 		cam = (Camera)FindObjectOfType(typeof(Camera));
-
+		 
 		cardCheck = 0;
 		totalCardUp =0;
 		hitCount = 0;

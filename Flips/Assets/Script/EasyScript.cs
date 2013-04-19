@@ -16,7 +16,13 @@ public class EasyScript : MonoBehaviour {
 		int count = 0;
 		for(int i=0;i<3;i++){
 			for(int j=0;j<2;j++){
-				Vector3 pos = new Vector3(i*20,j*20,0);
+		//		int cardposX = (Screen.width /3);
+		//		int cardposY = (Screen.height/2); 
+				
+				//Vector3 pos = new Vector3(i*cardposX,j*cardposY,0);
+				
+				Vector3 pos = new Vector3(i*10,j*20,0);
+				 
 				cards[i] = (GameObject)Instantiate(card,pos,transform.rotation);
 				Transform c = cards[i].transform.Find ("Face");
 				if(c == null)Debug.LogError ("No Face Object");

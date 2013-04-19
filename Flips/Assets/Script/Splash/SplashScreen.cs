@@ -4,15 +4,15 @@ using System.Collections;
 public class SplashScreen : MonoBehaviour {
 
 	GUITexture texture;
-	bool fadein,fadeOut;	
+	public bool fadein;	
 	Color start;
 	Color end;
 	
-	float ratio;
-	float timer;
+	public float ratio;
+	public float timer;
 	void Start () {
 		texture = GameObject.Find ("Metropolia").GetComponent<GUITexture>();
-		fadein = true;fadeOut = false;
+		fadein = true;
 		texture.color = new Color(texture.color.r,texture.color.g,texture.color.b,0.0f);
 		start = texture.color;
 		end = new Color(texture.color.r,texture.color.g,texture.color.b,1.0f);
@@ -22,23 +22,18 @@ public class SplashScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(fadein){
-			ratio += timer*0.7f;
+			ratio += timer;
 			texture.color = Color.Lerp(texture.color,end,ratio);
 			if(ratio > 1){
 				fadein = false;
 				ratio = 0;
-				StartCoroutine(WaitSplash ());
 			}
-		}else if (fadeOut){
-			ratio += timer*0.7f;
+		}else{
+			ratio += timer;
 			texture.color = Color.Lerp(texture.color,start,ratio);
-			if(ratio > 0.5f){
+			if(ratio > 1){
 				Application.LoadLevel(1);
 			}
 		}
-	}
-	IEnumerator WaitSplash(){
-		yield return new WaitForSeconds(1.0f);
-		fadeOut = true;
 	}
 }

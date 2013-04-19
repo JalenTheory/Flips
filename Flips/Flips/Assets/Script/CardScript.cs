@@ -11,6 +11,9 @@ public class CardScript : MonoBehaviour {
 	public bool rotateOut;
 	public bool faceIn;
 	public string cardTag;
+	
+	
+		//transform.localScale +=  new Vector3(screenrartio,screenrartio,0);
 
 	void Start () {
 		_tr  = GetComponent<Transform>();
@@ -20,8 +23,11 @@ public class CardScript : MonoBehaviour {
 		endRotation = Quaternion.Euler (0,degrees,0)*_tr.rotation;
 		rotateIn = false;
 		rotateOut = false;
-		faceIn = false;
+		faceIn = false; 
+		int screenrartio = Screen.height/Screen.width;
+		transform.localScale -=  new Vector3(screenrartio,screenrartio,0);
 	}
+	
 	void Update(){
 		if(rotateIn){
 			timer +=Time.deltaTime*2;

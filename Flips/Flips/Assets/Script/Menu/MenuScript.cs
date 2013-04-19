@@ -26,7 +26,7 @@ public class MenuScript : MonoBehaviour {
 	GUIStyle footer = new GUIStyle();
 	
 	enum Menu{
-		First,Second,Credits,Rest
+		First,Second,Score,Credits,Rest
 	}
 	Menu current;
 	bool firstMenu;
@@ -85,25 +85,26 @@ public class MenuScript : MonoBehaviour {
 			if(GUI.Button (secondButton,"Score",buttonStyle))
 			{
 				print ("Score");
+				current = Menu.Score;
 			}
-			
+			if(GUI.Button (thirdButton,"Quit",buttonStyle))
+			{
+				Application.Quit ();
+				
+			}
 			if(GUI.Button (fourthButton,"Credits",buttonStyle))
 			{  
 				print ("Credits");
 				current = Menu.Credits;
 			}
-			
-			if(GUI.Button (thirdButton,"Quit",buttonStyle))
-			{
-				Application.Quit ();	
-			}
 		}
 		
-		if((!firstMenu &&current == Menu.Rest) ||current == Menu.First||current == Menu.Second  ){
+		if((!firstMenu &&current == Menu.Rest)   ||current == Menu.Second  ){
 			firstButton= 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+offset,boxWidth,boxHeight);
 			secondButton = 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
 			thirdButton = 	new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
 			fourthButton =	new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*3+offset,boxWidth,boxHeight);
+			
 			GUI.backgroundColor = Color.magenta;
 			if(GUI.Button (firstButton,"Easy",buttonStyle))
 			{
@@ -121,11 +122,9 @@ public class MenuScript : MonoBehaviour {
 			{
 				current = Menu.First;
 			}
-		}
-
-		
-		
-		if(!firstMenu &&  current == Menu.Credits){
+			
+			
+			if(!firstMenu &&  current == Menu.Credits){
 			
 			 
 			Rect creditRec1 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+offset,boxWidth,boxHeight);
@@ -135,15 +134,40 @@ public class MenuScript : MonoBehaviour {
 		
 			GUI.Box (creditRec1,"Lucas",buttonStyle);
 			GUI.Box (creditRec2,"Maimuna",buttonStyle);	 
-			GUI.Box (creditRec3,"Scott ",buttonStyle); 
+			GUI.Box (creditRec3," ",buttonStyle); 
 				 
 			if(GUI.Button (BackRec4,"Back",buttonStyle))
 			{
 				current = Menu.First;
 			}
+				Debug.Log("huzzah in wrong place ");
 			 
+				 
+			}
+				
+
+			if(  current == Menu.Score){
+			
+			 
+			Rect creditRec1 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+offset,boxWidth,boxHeight);
+			Rect creditRec2 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight+offset,boxWidth,boxHeight);
+			Rect creditRec3 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*2+offset,boxWidth,boxHeight);
+			Rect BackRec4 = new Rect(boxPosWidth + Screen.width,titleBoxHeight+boxHeight*3+offset,boxWidth,boxHeight);
+		
+			GUI.Box (creditRec1,"hghjg",buttonStyle); Debug.Log("huzzah in right place");
+//			GUI.Box (creditRec2,PlayerPrefs.GetInt("Player score").ToString("0.00"),buttonStyle);	 
+//			GUI.Box (creditRec3,PlayerPrefs.GetInt("Player score").ToString("0.00"),buttonStyle); 			 
+ 		 		if(GUI.Button (BackRec4,"Back",buttonStyle))
+			{
+				current = Menu.First;
+			}
 		}
 		
+		
+		
+		
+
+	
 		
 		
 		GUI.Box (copyBox,"Metropolia Portal 2013",footer);
@@ -167,6 +191,17 @@ public class MenuScript : MonoBehaviour {
 				firstMenu = false;
 			}
 		}
+
+		
+		if(current == Menu.Score){
+			ratio += Time.deltaTime;
+			boxPosWidth = Mathf.Lerp(boxPosWidth ,posOut,ratio);
+			if(ratio >= 0.8f){
+				ratio = Time.deltaTime;
+				current = Menu.Rest;
+				firstMenu = false;
+			}
+		}
 		
 		else if(current == Menu.Credits){
 			 
@@ -179,26 +214,6 @@ public class MenuScript : MonoBehaviour {
 		}
 	}
 		
-}
+}}
 
 
-
-
-/*	1/6				4/6					1/6
- * *********************************************************
- * 
- * 						Title						1/3
- * 
- * **********************************************************
- * 			*			Play		*
- * 			*
- * 			*			Score		*			2/3
- * 			*
- * 			*			Quit		*
- * 			*
- * 			*
- * 						Credit
- *************************************************
- *
- *
- **/
